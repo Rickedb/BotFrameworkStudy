@@ -19,7 +19,7 @@ namespace BotApp
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new Dialogs.QnaDialog());
+                await Conversation.SendAsync(activity, () => new Dialogs.LanguageUnderstandingDialog());
             }
             else
             {
