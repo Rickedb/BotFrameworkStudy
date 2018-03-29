@@ -12,6 +12,7 @@ namespace BotApp
     {
         public static string SubscriptionKey = ConfigurationManager.AppSettings["QnaSubscriptionKey"];
         public static string KnowledgeBaseId = ConfigurationManager.AppSettings["QnaKnowledgeBaseId"];
+
         public static void Register(HttpConfiguration config)
         {
             // Json settings
