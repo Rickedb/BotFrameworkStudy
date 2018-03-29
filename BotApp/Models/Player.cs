@@ -1,8 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace BotApp.Models
 {
@@ -10,7 +7,7 @@ namespace BotApp.Models
     public class Player
     {
         [JsonProperty("tracked_until")]
-        public DateTime TrackedUntil { get; set; }
+        public int TrackedUntil { get; set; }
         [JsonProperty("profile")]
         public Profile Profile { get; set; }
         [JsonProperty("competitive_rank")]

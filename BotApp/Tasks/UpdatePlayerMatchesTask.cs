@@ -1,22 +1,19 @@
-﻿using BotApp.Helpers;
-using BotApp.Models;
-using BotApp.Repositories;
-using Newtonsoft.Json;
+﻿using BotApp.Repositories;
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Net.Http;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace BotApp.Tasks
 {
-    public class UpdateHeroesTask :IDisposable
+    public class UpdatePlayerMatchesTask
     {
         private readonly IDotaRepository _dotaRepository;
         private bool _dispose;
 
-        public UpdateHeroesTask()
+        public UpdatePlayerMatchesTask()
         {
             _dotaRepository = new DotaRepository();
         }
@@ -25,7 +22,6 @@ namespace BotApp.Tasks
         {
             while (!_dispose)
             {
-                DotaApp.Heroes = (await _dotaRepository.GetHeroes()).ToList();
                 Thread.Sleep(TimeSpan.FromMinutes(10));
             }
         }

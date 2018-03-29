@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace BotApp.Repositories
 {
+    [Serializable]
     public class DotaRepository : IDotaRepository
     {
         public async Task<IEnumerable<Hero>> GetHeroes()

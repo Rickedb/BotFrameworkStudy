@@ -19,13 +19,13 @@ namespace BotApp.Dialogs
         {
             Repliers = new Dictionary<string, IIntentReplier>()
             {
-                { "Consult", new UnderstandIntentReply() },
+                { "Consult", new ConsultIntentReply() },
                 { "Register", new RegisterIntentReply() }
             };
         }
 
         [LuisIntent("Consult")]
-        public Task Understand(IDialogContext context, LuisResult result)
+        public Task Consult(IDialogContext context, LuisResult result)
         {
             Repliers["Consult"].Reply(context, result);
             return Task.CompletedTask;

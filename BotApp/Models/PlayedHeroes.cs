@@ -3,6 +3,7 @@ using System;
 
 namespace BotApp.Models
 {
+    [Serializable]
     public class PlayedHeroes
     {
         private long _dateInTicks;

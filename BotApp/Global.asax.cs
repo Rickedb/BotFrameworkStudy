@@ -17,6 +17,7 @@ namespace BotApp
             DotaApp.RunningTasks = new List<Task>()
             {
                 Task.Run(new UpdateHeroesTask().Run)
+                Task.Run(new UpdatePlayerMatchesTask().Run)
             };
         }
 

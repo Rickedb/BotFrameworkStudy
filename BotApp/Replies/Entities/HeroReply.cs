@@ -19,18 +19,18 @@ namespace BotApp.Replies.Entities
         private readonly IEntityReplier _nextReply;
         private const string _entity = "hero";
         
-        public HeroReply()
+        public HeroReply(IEntityReplier next)
         {
-
+            _nextReply = next;
         }
 
-        public async void Reply(IDialogContext context, EntityRecommendation result)
+        public async void Reply(IDialogContext context, IList<EntityRecommendation> result)
         {
-            Activity response = ((Activity)context.Activity).CreateReply();
-
-            if (result.Type == "Hero")
+            var entity = result.FirstOrDefault(x => x.Type == "Hero");
+            if (entity != null)
             {
-                var hero = DotaApp.Heroes.FirstOrDefault(x => x.Name.ToLower().Equals(result.Entity.ToLower()));
+                Activity response = ((Activity)context.Activity).CreateReply();
+                var hero = DotaApp.Heroes.FirstOrDefault(x => x.Name.ToLower().Equals(entity.Entity.ToLower()));
 
                 if (hero != null)
                 {
@@ -43,10 +43,13 @@ namespace BotApp.Replies.Entities
                     response.Attachments.Add(card.ToAttachment());
                 }
                 else
-                    response.Text = $"I don't know which hero is {result.Entity}";
+                    response.Text = $"I don't know which hero is {entity.Entity}";
+
+                await context.PostAsync(response);
+                return;
             }
 
-            await context.PostAsync(response);
+            _nextReply.Reply(context, result);
         }
     }
 }

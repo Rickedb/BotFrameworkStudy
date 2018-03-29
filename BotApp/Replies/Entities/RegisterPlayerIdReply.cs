@@ -1,18 +1,22 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis.Models;
 
 namespace BotApp.Replies.Entities
 {
+    [Serializable]
     public class RegisterPlayerIdReply : IEntityReplier
     {
-        public async void Reply(IDialogContext context, EntityRecommendation result)
+        public async void Reply(IDialogContext context, IList<EntityRecommendation> result)
         {
-            if (result.Type == "PlayerId")
+            var entity = result.FirstOrDefault(x => x.Type == "PlayerId");
+            if (entity != null)
             {
-                if(!DotaApp.PlayerIds.Any(x=> x == result.Entity))
-                    DotaApp.PlayerIds.Add(result.Entity);
-                await context.PostAsync($"PlayerId [{result.Entity}] with success!");
+                if(!DotaApp.PlayerIds.Any(x=> x == entity.Entity))
+                    DotaApp.PlayerIds.Add(entity.Entity);
+                await context.PostAsync($"PlayerId [{entity.Entity}] with success!");
             }
         }
     }

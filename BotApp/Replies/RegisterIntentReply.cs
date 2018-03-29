@@ -1,10 +1,11 @@
-﻿using System.Linq;
-using BotApp.Replies.Entities;
+﻿using BotApp.Replies.Entities;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis.Models;
+using System;
 
 namespace BotApp.Replies
 {
+    [Serializable]
     public class RegisterIntentReply : IIntentReplier
     {
         private readonly IEntityReplier _repliers;
@@ -14,14 +15,9 @@ namespace BotApp.Replies
             _repliers = new RegisterPlayerIdReply();
         }
 
-        public async void Reply(IDialogContext context, LuisResult result)
+        public void Reply(IDialogContext context, LuisResult result)
         {
-            var entity = result.Entities.FirstOrDefault();
-
-            if (entity != null)
-                _repliers.Reply(context, entity);
-            else
-                await context.PostAsync("I didn't understand what you want to register!");
+            _repliers.Reply(context, result.Entities);
         }
     }
 }

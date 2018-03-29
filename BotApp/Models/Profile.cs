@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace BotApp.Models
 {
+    [Serializable]
     public class Profile
     {
         [JsonProperty("account_id")]
@@ -16,8 +14,8 @@ namespace BotApp.Models
         public string SteamId { get; set; }
         [JsonProperty("avatarfull")]
         public string AvatarUrl { get; set; }
-        [JsonProperty("last_login")]
-        public DateTime LastLogin { get; set; }
+        //[JsonProperty("last_login")]
+        //public DateTime LastLogin { get; set; }
         [JsonProperty("loccountrycode")]
         public string CountryCode { get; set; }
     }

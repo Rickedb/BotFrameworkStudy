@@ -151,6 +151,7 @@
     <Compile Include="Dialogs\LanguageUnderstandingDialog.cs" />
     <Compile Include="Dialogs\QnaDialog.cs" />
     <Compile Include="Dialogs\RootDialog.cs" />
+    <Compile Include="Dialogs\UpdaterDialog.cs" />
     <Compile Include="DotaApp.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -169,11 +170,13 @@
     <Compile Include="Replies\Interfaces\IEntityReplier.cs" />
     <Compile Include="Replies\Interfaces\IIntentReplier.cs" />
     <Compile Include="Replies\RegisterIntentReply.cs" />
-    <Compile Include="Replies\UnderstandIntentReply.cs" />
+    <Compile Include="Replies\ConsultIntentReply.cs" />
     <Compile Include="Repositories\DotaRepository.cs" />
     <Compile Include="Repositories\Interfaces\IDotaRepository.cs" />
+    <Compile Include="Repositories\QueueRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Tasks\UpdateHeroesTask.cs" />
+    <Compile Include="Tasks\UpdatePlayerMatchesTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
