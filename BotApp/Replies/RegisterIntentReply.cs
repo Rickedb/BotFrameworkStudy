@@ -11,7 +11,7 @@ namespace BotApp.Replies
 
         public RegisterIntentReply()
         {
-            _repliers = new PlayerIdEntity();
+            _repliers = new RegisterPlayerIdReply();
         }
 
         public async void Reply(IDialogContext context, LuisResult result)

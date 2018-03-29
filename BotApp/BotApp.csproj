@@ -156,13 +156,22 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DotaEndpointsHelper.cs" />
+    <Compile Include="Models\EstimatedMmr.cs" />
+    <Compile Include="Models\PlayedHeroes.cs" />
+    <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Hero.cs" />
+    <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\RecentMatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Replies\Entities\HeroReply.cs" />
+    <Compile Include="Replies\Entities\PlayerIdReply.cs" />
+    <Compile Include="Replies\Entities\RegisterPlayerIdReply.cs" />
     <Compile Include="Replies\Interfaces\IEntityReplier.cs" />
     <Compile Include="Replies\Interfaces\IIntentReplier.cs" />
     <Compile Include="Replies\RegisterIntentReply.cs" />
     <Compile Include="Replies\UnderstandIntentReply.cs" />
+    <Compile Include="Repositories\DotaRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IDotaRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Tasks\UpdateHeroesTask.cs" />
   </ItemGroup>
