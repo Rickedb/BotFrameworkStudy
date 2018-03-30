@@ -1,12 +1,6 @@
-﻿using BotApp.Helpers;
-using BotApp.Models;
-using BotApp.Repositories;
-using Newtonsoft.Json;
+﻿using BotApp.Repositories;
 using System;
 using System.Linq;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace BotApp.Tasks

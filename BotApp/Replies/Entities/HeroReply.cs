@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using BotApp.Helpers;
-using BotApp.Models;
-using Hangfire;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis.Models;
 using Microsoft.Bot.Connector;
-using Newtonsoft.Json;
 
 namespace BotApp.Replies.Entities
 {

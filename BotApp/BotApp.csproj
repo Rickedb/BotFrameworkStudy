@@ -155,7 +155,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\DotaEndpointsHelper.cs" />
     <Compile Include="Models\EstimatedMmr.cs" />
     <Compile Include="Models\PlayedHeroes.cs" />
     <Compile Include="Models\Player.cs" />
