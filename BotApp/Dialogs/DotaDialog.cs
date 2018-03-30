@@ -20,7 +20,9 @@ namespace BotApp.Dialogs
             Repliers = new Dictionary<string, IIntentReplier>()
             {
                 { "Consult", new ConsultIntentReply() },
-                { "Register", new RegisterIntentReply() }
+                { "Register", new RegisterIntentReply() },
+                { "Update", new UpdateIntentReply() },
+                { "Compliment", new ComplimentIntentReply() }
             };
         }
 
@@ -31,16 +33,24 @@ namespace BotApp.Dialogs
             return Task.CompletedTask;
         }
 
-        [LuisIntent("Build")]
-        public async Task Build(IDialogContext context, LuisResult result)
+        [LuisIntent("Update")]
+        public Task Update(IDialogContext context, LuisResult result)
         {
-            await context.PostAsync("build intent");
+            Task.Run(() => Repliers["Update"].Reply(context, result));
+            return Task.CompletedTask;
         }
 
         [LuisIntent("Register")]
         public Task Register(IDialogContext context, LuisResult result)
         {
             Repliers["Register"].Reply(context, result);
+            return Task.CompletedTask;
+        }
+
+        [LuisIntent("Compliment")]
+        public Task Compliment(IDialogContext context, LuisResult result)
+        {
+            Repliers["Compliment"].Reply(context, result);
             return Task.CompletedTask;
         }
 

@@ -14,9 +14,11 @@ namespace BotApp
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            DotaApp.Heroes = new List<Models.Hero>();
+            DotaApp.PlayerIds = new List<string>();
             DotaApp.RunningTasks = new List<Task>()
             {
-                Task.Run(new UpdateHeroesTask().Run)
+                Task.Run(new UpdateHeroesTask().Run),
                 Task.Run(new UpdatePlayerMatchesTask().Run)
             };
         }

@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using BotApp.Dialogs;
 using Microsoft.Bot.Builder.CognitiveServices.QnAMaker;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
@@ -19,11 +20,8 @@ namespace BotApp
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new Dialogs.DotaDialog());
-            }
-            else if (activity.Type == ActivityTypes.Ping)
-            {
-
+                await Conversation.SendAsync(activity, () => new DotaDialog());
+                
             }
             else
             {

@@ -14,7 +14,7 @@ namespace BotApp.Tasks
     public class UpdateHeroesTask :IDisposable
     {
         private readonly IDotaRepository _dotaRepository;
-        private bool _dispose;
+        private bool _dispose = false;
 
         public UpdateHeroesTask()
         {
@@ -26,7 +26,7 @@ namespace BotApp.Tasks
             while (!_dispose)
             {
                 DotaApp.Heroes = (await _dotaRepository.GetHeroes()).ToList();
-                Thread.Sleep(TimeSpan.FromMinutes(10));
+                Task.Delay(TimeSpan.FromMinutes(10)).Wait();
             }
         }
 

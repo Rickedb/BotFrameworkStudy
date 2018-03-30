@@ -20,9 +20,9 @@ namespace BotApp.Repositories
             return await Deserialize<Player>(await Get($"https://api.opendota.com/api/players/{playerId}"));
         }
 
-        public Task<IEnumerable<RecentMatches>> GetRecentMatches(string playerId)
+        public async Task<IEnumerable<RecentMatches>> GetRecentMatches(string playerId)
         {
-            throw new NotImplementedException();
+            return await Deserialize<List<RecentMatches>>(await Get($"https://api.opendota.com/api/players/{playerId}/recentMatches"));
         }
 
         public async Task<IEnumerable<PlayedHeroes>> GetPlayedHeroes(string playerId)

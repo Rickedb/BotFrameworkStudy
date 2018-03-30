@@ -16,7 +16,7 @@ namespace BotApp.Replies.Entities
             {
                 if(!DotaApp.PlayerIds.Any(x=> x == entity.Entity))
                     DotaApp.PlayerIds.Add(entity.Entity);
-                await context.PostAsync($"PlayerId [{entity.Entity}] with success!");
+                await context.PostAsync($"PlayerId [{entity.Entity}] registered with success!");
             }
         }
     }

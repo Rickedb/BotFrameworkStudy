@@ -43,7 +43,7 @@ namespace BotApp.Replies.Entities
                     response.Attachments.Add(card.ToAttachment());
                 }
                 else
-                    response.Text = $"I don't know which hero is {entity.Entity}";
+                    response.Text = $"I don't know which hero is [{entity.Entity}]";
 
                 await context.PostAsync(response);
                 return;

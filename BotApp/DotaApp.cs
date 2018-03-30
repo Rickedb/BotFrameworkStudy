@@ -10,7 +10,7 @@ namespace BotApp
     public static class DotaApp
     {
         public static List<Hero> Heroes { get; set; }
-        public static List<string> PlayerIds { get; set; }
+        public static List<string> PlayerIds { get; set; } 
         public static List<Task> RunningTasks { get; set; }
     }
 }

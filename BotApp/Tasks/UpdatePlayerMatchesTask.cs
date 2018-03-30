@@ -1,4 +1,5 @@
-﻿using BotApp.Repositories;
+﻿using BotApp.Models;
+using BotApp.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,39 @@ namespace BotApp.Tasks
 
         public async Task Run()
         {
+            Dictionary<string, long> lastMatchIds = new Dictionary<string, long>();
             while (!_dispose)
             {
-                Thread.Sleep(TimeSpan.FromMinutes(10));
+                foreach (var id in DotaApp.PlayerIds)
+                {
+                    Player player = await GetPlayer(id);
+                    var recentMatches = (await _dotaRepository.GetRecentMatches(id));
+                    long lastId = recentMatches.Max(x => x.MatchId);
+                    if (lastMatchIds.ContainsKey(id))
+                    {
+                        var selectedMatches = recentMatches.Where(x => x.MatchId > lastMatchIds[id]).ToList();
+                        foreach(var match in selectedMatches)
+                        {
+                            match.Hero = GetHero(match.HeroId);
+                            match.Player = player;
+                        }
+                        QueueRepository.Instance.Add(selectedMatches);
+                        lastMatchIds[id] = lastId;
+                    }
+                    else
+                    {
+                        var selectedMatches = recentMatches.ToList();
+                        foreach (var match in selectedMatches)
+                        {
+                            match.Hero = GetHero(match.HeroId);
+                            match.Player = player;
+                        }
+                        QueueRepository.Instance.Add(selectedMatches);
+                        lastMatchIds.Add(id, lastId);
+                    }
+
+                }
+                Task.Delay(TimeSpan.FromSeconds(30)).Wait();
             }
         }
 
@@ -30,5 +61,9 @@ namespace BotApp.Tasks
         {
             _dispose = true;
         }
+
+        private async Task<Player> GetPlayer(string id) => await _dotaRepository.GetPlayer(id);
+
+        private Hero GetHero(int id) => DotaApp.Heroes.FirstOrDefault(x => x.Id == id);
     }
 }
