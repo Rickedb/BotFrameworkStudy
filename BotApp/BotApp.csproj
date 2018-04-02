@@ -146,11 +146,7 @@
     <Compile Include="App_Start\HangfireTasksConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
-    <Compile Include="Dialogs\DebuggerDialog.cs" />
     <Compile Include="Dialogs\DotaDialog.cs" />
-    <Compile Include="Dialogs\LanguageUnderstandingDialog.cs" />
-    <Compile Include="Dialogs\QnaDialog.cs" />
-    <Compile Include="Dialogs\RootDialog.cs" />
     <Compile Include="DotaApp.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -182,7 +178,14 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Properties\PublishProfiles\BotMarathonApp - Web Deploy.pubxml" />
+    <Content Include="Properties\PublishProfiles\DotaBotApp.PublishSettings">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Properties\PublishProfiles\BotApp20180331085949 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\dotaappbot - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\DotaBotApp - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\dotabotapp-a8d1 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
